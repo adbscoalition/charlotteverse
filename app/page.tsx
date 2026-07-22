@@ -319,7 +319,7 @@ export default function Home() {
             <h1>Turn CLT into a living star.</h1>
           </div>
           <p>
-            Calculate TeffB, RadB, MassB, surname seeds, continuous spectral weights, workbook evolution,
+            Calculate TeffB, RadB, Teff-driven MassB, surname seeds, continuous spectral weights, workbook evolution,
             and current stellar specifications. Every saved Charlotte recalculates from full precision every five seconds.
           </p>
         </section>
@@ -501,7 +501,7 @@ export default function Home() {
             <article>
               <span>01</span>
               <h3>Base + seed</h3>
-              <p>CLT produces TeffB, RadB, and MassB. The legal surname independently produces TeffSeed, RadSeed, and MassSeed.</p>
+              <p>CLT produces TeffB, RadB, and a Teff-driven MassB. The legal surname independently produces TeffSeed, RadSeed, and MassSeed.</p>
             </article>
             <article>
               <span>02</span>

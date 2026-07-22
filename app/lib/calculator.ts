@@ -144,22 +144,28 @@ export const calculateRadB = (teffB: number) => {
   return round(Math.max(0.005, value), 6);
 };
 
-export const calculateMassB = (clt: number) => {
-  const x = Math.max(0, clt);
+export const calculateMassB = (teffB: number) => {
+  const t = Math.max(0, teffB);
   const ns = (midpoint: number, scale: number) => {
     const base = sigmoid(-midpoint / scale);
-    return (sigmoid((x - midpoint) / scale) - base) / (1 - base);
+    return (sigmoid((t - midpoint) / scale) - base) / (1 - base);
   };
   return round(
     0.0000028 +
-      0.06766 * (1 - Math.exp(-((x / 1.59) ** 1.191))) +
-      0.5311 * ns(231.5, 60) +
-      0.6742 * ns(958.7, 151.6) +
-      0.7712 * ns(3261, 60) +
-      15.16 * ns(4584, 366.9) +
-      21.19 * ns(7612, 81.09) +
-      180.8 * ns(11000, 1618) +
-      96.31 * ns(20499, 1816),
+      0.047361031 * ns(1000, 700) +
+      0.344657415 * ns(3000, 250) +
+      0.283577181 * ns(4200, 450) +
+      0.708791982 * ns(6000, 600) +
+      0.481235531 * ns(8000, 650) +
+      1.84039258 * ns(10500, 700) +
+      6.74581025 * ns(18000, 2500) +
+      10.506204 * ns(28000, 3200) +
+      8.10137484 * ns(36000, 1600) +
+      35.7680788 * ns(45000, 2200) +
+      21.6994721 * ns(52000, 1800) +
+      153.452768 * ns(58500, 1000) +
+      13.45306 * ns(61000, 1300) +
+      123.630861 * ns(70000, 1800),
     6,
   );
 };
@@ -543,7 +549,7 @@ export const calculateStar = (input: StarInput, evaluatedAt: Date): StarResult =
   const { radSeed, teffSeed, massSeed } = calculateSurnameSeeds(input.surname);
   const teffB = calculateTeffB(input.clt);
   const radB = calculateRadB(teffB);
-  const massB = calculateMassB(input.clt);
+  const massB = calculateMassB(teffB);
   const seededTeff = teffB * teffSeed;
   const seededRadius = round(radB * radSeed, 6);
   const zamsMass = round(massB * massSeed, 6);
@@ -630,7 +636,7 @@ export const formatCompact = (value: number, maximumFractionDigits = 2) =>
 
 export const sourceMetadata = {
   cltVersion: "CLT-6",
-  formulaVersion: "User TEFFB / RadB / MassB set — 2026-07-22",
+  formulaVersion: "User TEFFB / RadB / Teff-driven MassB set — 2026-07-22",
   workbookVersion: "stellar_evolution_with_redefined_teff_spectral_rubric.xlsx",
   codexVersion: "CHARLOTTEVERSELAW_Rule92_Applied.docx — 2026-07-22",
 };

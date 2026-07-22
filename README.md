@@ -4,7 +4,7 @@ A GitHub-ready Next.js application for the fictional Charlotteverse. It converts
 
 ## Features
 
-- TEFFB, RadB, MassB, RadSeed, TeffSeed, and MassSeed calculations
+- TEFFB, RadB, Teff-driven MassB, RadSeed, TeffSeed, and MassSeed calculations
 - User-requested TEFFB display rounding to three decimal places
 - Conditional MassB display precision: six decimals below 1, four from 1 to below 100, and two at 100 or greater
 - O1–L0 Seeded-Teff spectral rubric with continuous SpectralB weights
